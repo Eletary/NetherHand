@@ -1,0 +1,22 @@
+{
+  "name": "netherhand",
+  "version": "1.0.0",
+  "description": "An evil hand to gather power for you.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eletary/NetherHand.git"
+  },
+  "author": "ppip",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eletary/NetherHand/issues"
+  },
+  "homepage": "https://github.com/Eletary/NetherHand#readme",
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  }
+}
