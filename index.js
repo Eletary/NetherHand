@@ -45,4 +45,6 @@ $(document).ready(() => {
             tb[i].children[0].innerHTML = `${String.fromCharCode(65 + i)}<br>${ac}/${submit}`;
         }
     }
+    console.log('test');
+    let q = '123';
 });
