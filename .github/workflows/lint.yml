@@ -1,5 +1,12 @@
 name: CI
-on: push
+on:
+  # Trigger the workflow on push or pull request,
+  push:
+    paths:
+      - index.js
+  pull_request:
+    paths:
+      - index.js
 jobs:
   build:
     runs-on: ubuntu-latest
