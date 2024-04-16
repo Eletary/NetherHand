@@ -34,15 +34,30 @@ $(document).ready(() => {
     }
     if (/^\/contest\/[0-9a-f]{16,24}\/scoreboard/.test(url)) {
         let tb = $("tr").children(".col--problem"), L = UiContext.tdoc.pids.length;
-        for (let i = 0; i < L; ++i) {
-            let ac = 0, submit = 0;
-            for (let j = i + L; j < tb.length; j += L) {
-                let s = tb[j].innerText;
-                if (s.includes("-")) continue;
-                ++submit;
-                if (s.includes("100 /") || !s.includes("/") && s.includes("100")) ++ac;
+        if ($('.col--total_score').length) {
+            for (let i = 0; i < L; ++i) {
+                let ac = 0, submit = 0;
+                for (let j = i + L; j < tb.length; j += L) {
+                    let s = tb[j].innerText;
+                    if (s.includes("-")) continue;
+                    ++submit;
+                    if (s.includes("100 /") || !s.includes("/") && s.includes("100")) ++ac;
+                    tb[j].innerText = s.match('\d+')[0];
+                }
+                tb[i].children[0].innerHTML = `${String.fromCharCode(65 + i)}<br>${ac}/${submit}`;
             }
-            tb[i].children[0].innerHTML = `${String.fromCharCode(65 + i)}<br>${ac}/${submit}`;
+        } else {
+            for (let i = 0; i < L; ++i) {
+                let ac = 0, submit = 0;
+                for (let j = i + L; j < tb.length; j += L) {
+                    let s = tb[j].innerText;
+                    console.log(s);
+                    if (!s.includes("-") && !s.includes(":")) continue;
+                    ++submit;
+                    if (s.includes(":")) ++ac;
+                }
+                tb[i].children[0].innerHTML = `${String.fromCharCode(65 + i)}<br>${ac}/${submit}`;
+            }
         }
     }
 });
